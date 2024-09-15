@@ -1,10 +1,15 @@
 fn main() {
     let mut s = String::from("Hello");
-    s = moving_ownership(s);
-    println!("{s}");
+    let r1 = &s;
+    let r2 = &s;
+    println!("{r1}, {r2}");
+    println!("{r1}, {r2}");
+
+    let r3 = &mut s;
+    println!("{r3}");
+    
 }
 
-fn moving_ownership(mut s: String) -> String{
-    s.push_str(", world");
-    s
-}
+
+
+

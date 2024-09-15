@@ -1,1 +1,1 @@
-hello
+rustup doc --book
