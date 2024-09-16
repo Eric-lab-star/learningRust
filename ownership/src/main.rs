@@ -1,11 +1,21 @@
 fn main() {
-    let dr = dangling_reference();
+    let message = String::from("안녕하세요");
+    let word = first_word(&message);
+    println!("{}", word);
+
 }
 
-fn  dangling_reference() -> String{
-    let s = String::from("hello");
-    s
+fn first_word(s: &String) -> &str{
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() { 
+        if item == b' '{
+            return &s[..i]
+        }
+    }
+    &s[..]
 }
+
+
 
 
 
