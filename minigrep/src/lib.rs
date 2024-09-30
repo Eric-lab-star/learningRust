@@ -2,6 +2,7 @@ use std::env;
 use std::error::Error;
 use std::fs;
 
+/// file path should be included in project
 pub struct Config {
     pub query: String,
     pub file_path: String,
