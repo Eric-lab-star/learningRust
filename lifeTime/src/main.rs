@@ -18,5 +18,6 @@ where
 
 }
 
-fn main() {}
+fn main() {
+}
 

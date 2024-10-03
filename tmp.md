@@ -1,1 +1,0 @@
-rustup doc --book
