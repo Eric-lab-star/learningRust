@@ -1,19 +1,10 @@
-struct CustomSmartPointer {
-    data: String,
+use std::cell::RefCell;
+use std::rc::Rc;
+
+#[derive(Debug)]
+struct Node {
+    value: i32,
+    children: RefCell<Vec<Rc<Node>>>,
 }
 
-impl Drop for CustomSmartPointer {
-    fn drop(&mut self) {
-        println!("Dropping {}", self.data );
-    }
-}
-fn main() {
-    let c = CustomSmartPointer {
-        data: String::from("my stuff"),
-    };
-
-    drop(c);
-
-    println!("CustomSmartPointers created");
-
-}
+fn main() {}
