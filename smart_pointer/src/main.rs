@@ -1,41 +1,27 @@
-use core::fmt;
-use std::fmt::{Display, Formatter};
-
-use crate::List::{Cons, Nil};
+use std::{cell::RefCell, rc::{Rc, Weak}};
 
 #[derive(Debug)]
-enum List {
-    Cons(i32, Box<List>),
-    Nil,
+struct Node {
+    value: i32,
+    parent: RefCell<Weak<Node>>,
+    children: RefCell<Vec<Rc<Node>>>,
 }
-
-impl Display for List {
-    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        let mut msg: Vec<i32> = vec![];
-        List::walk(self, &mut msg);
-        write!(f, "{:?}", msg)
-    }
-}
-
-impl List {
-    fn walk(list: &List, cup: &mut Vec<i32>){
-        match list {
-            Cons(v, b) => {
-                cup.push(*v);
-                List::walk(&b, cup);
-            }
-            _ => {}
-        } 
-    }
-
-}
-
 
 fn main() {
-    let a_list = Cons(1, Box::new(Nil));
-    let b_list = Cons(2, Box::new(a_list));
-    let c_list = Cons(3, Box::new(b_list));
+    let leaf = Rc::new(Node {
+        value: 3,
+        parent: RefCell::new(Weak::new()),
+        children: RefCell::new(vec![]),
+    });
 
-    println!("{}", c_list);
+    println!("leaf parent {:?}", leaf.parent.borrow().upgrade());
+    let branch = Rc::new(Node {
+        value: 5,
+        parent: RefCell::new(Weak::new()),
+        children: RefCell::new(vec![Rc::clone(&leaf)]),
+    });
+
+    *leaf.parent.borrow_mut() = Rc::downgrade(&branch);
+    println!("leaf parent {:?}", leaf.parent.borrow().upgrade());
+
 }
-
