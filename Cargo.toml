@@ -1,8 +1,7 @@
 [workspace]
 
 members = [
-	"adder",
-	"add_one",
+	"ownership",
 ]
 
 resolver = "2"
