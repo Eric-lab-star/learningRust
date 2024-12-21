@@ -1,6 +1,7 @@
 [workspace]
 
-members = [
+members = [ 
+	"minigrep",
 	"ownership",
 ]
 
