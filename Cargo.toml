@@ -1,6 +1,7 @@
 [workspace]
 
 members = [ 
+	"functional", 
 	"minigrep",
 	"ownership",
 ]
