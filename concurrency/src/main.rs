@@ -1,3 +1,9 @@
+use std::{thread, time::Duration};
+
 fn main() {
-    println!("Hello, world!");
+    let v = vec![1,2,3];
+    let handle = thread::spawn(move ||{
+        println!("{:?}", v);
+    });
+    handle.join().unwrap();
 }
