@@ -2,7 +2,7 @@
 
 members = [ "concurrency", 
 	"functional", 
-	"minigrep", "node",
+	"minigrep", "node", "oop",
 	"ownership",
 ]
 
