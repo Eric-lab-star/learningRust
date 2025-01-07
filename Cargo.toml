@@ -2,7 +2,7 @@
 
 members = [ 
 	"functional", 
-	"minigrep",
+	"minigrep", "node",
 	"ownership",
 ]
 
