@@ -1,11 +1,11 @@
-use std::{sync::mpsc, thread};
+use std::{sync::{mpsc, Mutex}, thread};
 
 fn main() {
-    let (tx, rx) = mpsc::channel();
-    thread::spawn(move || {
-        let val = String::from("hi");
-        tx.send(val).unwrap();
-    });
-    let received = rx.recv().unwrap();
-    println!("Got: {received}");
+    let m = Mutex::new(5);
+    {
+        let mut num = m.lock().unwrap();
+        *num = 6;
+    }
+
+    println!("m = {m:?}");
 }
