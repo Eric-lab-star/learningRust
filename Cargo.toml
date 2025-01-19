@@ -3,7 +3,7 @@
 members = [ "concurrency", 
 	"functional", 
 	"minigrep", "node", "oop",
-	"ownership",
+	"ownership", "trait_object",
 ]
 
 resolver = "2"
